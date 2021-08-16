@@ -1,3 +1,5 @@
+
+//Route to last workout 
 const API = {
   async getLastWorkout() {
     let res;
@@ -23,6 +25,7 @@ const API = {
 
     return json;
   },
+  //Route to add a new exercise
   async createWorkout(data = {}) {
     const res = await fetch("/api/workouts", {
       method: "POST",
@@ -34,7 +37,7 @@ const API = {
 
     return json;
   },
-
+//Route to retrieve the past 7 workouts 
   async getWorkoutsInRange() {
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();

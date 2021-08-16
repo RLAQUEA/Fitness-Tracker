@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const workoutSchema = new workoutSchema({
     day: {
-//add stuff
+    type: DataTypes.STRING, 
     }, 
     exercises: {
-//add stuff
+    type: DataTypes.STRING,
     }
 })
 
