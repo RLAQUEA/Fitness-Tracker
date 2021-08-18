@@ -112,6 +112,9 @@
 
 
 
+
+
+
 function generatePalette() {
   const arr = [
     '#003F5C',
@@ -238,25 +241,25 @@ function populateChart(data) {
       },
     },
   });
-  let pieChart = new Chart(pie, {
-    type: 'pie',
-    data: {
-      labels: workouts,
-      datasets: [
-        {
-          label: 'Exercises Performed',
-          backgroundColor: colors,
-          data: durations,
-        },
-      ],
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Exercises Performed',
-      },
-    },
-  });
+  // let pieChart = new Chart(pie, {
+  //   type: 'pie',
+  //   data: {
+  //     labels: workouts,
+  //     datasets: [
+  //       {
+  //         label: 'Exercises Performed',
+  //         backgroundColor: colors,
+  //         data: durations,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     title: {
+  //       display: true,
+  //       text: 'Exercises Performed',
+  //     },
+  //   },
+  // });
   let donutChart = new Chart(pie2, {
     type: 'doughnut',
     data: {
