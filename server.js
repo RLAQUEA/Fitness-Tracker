@@ -1,8 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const view = require("./controllers/view.js");
-const api = require("./controllers/api.js");
+const controllers = require("./controllers");
+// const view = require("./controllers/view.js");
+
 
 const PORT = process.env.PORT || 3000; 
 
@@ -22,8 +23,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Fitness-Tracker
     useFindAndModify: false,
 });
 
-app.use(api);
-app.use(view);
+app.use(controllers);
+// app.use(api);
+// app.use(view);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

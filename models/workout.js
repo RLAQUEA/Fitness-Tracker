@@ -1,20 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const formatDate = require("../models/formatDate.js")
+// const formatDate = require("../models/formatDate.js")
 
 const workoutSchema = new Schema({
-    // day: {
-    // type: Date,
-    // default: Date.now, 
-    // get: timeStamp => formatDate(timeStamp)
-    // },
-    day: {
+        day: {
         type: Date,
         default: Date.now,
-    },
-    exercises: [{
-        type: {
-            type: String,
+        },
+        exercises: {
+            type: Array,
             trim: true,
             required: "Enter the type of exercise you'd like:"
         },
@@ -43,8 +37,7 @@ const workoutSchema = new Schema({
             type: Number,
             required: "Enter the distance of the run:"
         }
-    }]
-})
+});
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
