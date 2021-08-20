@@ -1,9 +1,11 @@
 
 const Workout = require("../models/workout.js");
 const router = require("express").Router();
+
+// Get to all workouts
 router.get("/workouts", async (req, res) => {
   try {
-
+//  Calculates total duration of all workouts 
     const data = await Workout.aggregate([
       {
         $addFields: {
@@ -17,7 +19,7 @@ router.get("/workouts", async (req, res) => {
   }
   catch (err) { res.json(err); }
 });
-
+// Create a new workout
 router.post("/workouts", async ({ body }, res) => {
   try {
     const data = Workout.create(body);
@@ -26,7 +28,7 @@ router.post("/workouts", async ({ body }, res) => {
   }
   catch (err) { res.json(err); }
 });
-
+// Update a single workout 
 router.put("/workouts/:id", async ({ body, params }, res) => {
   try{
     const data = await Workout.findByIdAndUpdate(
@@ -37,7 +39,7 @@ router.put("/workouts/:id", async ({ body, params }, res) => {
   }
   catch(err) { res.json(err); }
 });
-
+// Gets last 7 days of workouts
 router.get("/workouts/range", (req, res) => {
   Workout.aggregate([
     { $addFields: { totalDuration: { $sum: "$exercises.duration", 
