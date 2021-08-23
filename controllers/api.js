@@ -1,6 +1,6 @@
-
 const Workout = require("../models/workout.js");
 const router = require("express").Router();
+
 
 // Get to all workouts
 router.get('/api/workouts', (req, res) => {
@@ -13,15 +13,15 @@ router.get('/api/workouts', (req, res) => {
       },
     },
   ])
-    .then((dbWorkouts) => {
-      res.json(dbWorkouts);
+    .then((allWorkouts) => {
+      res.json(allWorkouts);
     })
     .catch((err) => {
       res.json(err);
     });
 });
 // Create a new workout
-router.post("/workouts", async ({ body }, res) => {
+router.post('/workouts', async ({ body }, res) => {
   try {
     const data = Workout.create(body);
   
@@ -30,7 +30,7 @@ router.post("/workouts", async ({ body }, res) => {
   catch (err) { res.json(err); }
 });
 // Update a single workout 
-router.put("/workouts/:id", async ({ body, params }, res) => {
+router.put('/workouts/:id', async ({ body, params }, res) => {
   try{
     const data = await Workout.findByIdAndUpdate(
       { _id: `${params.id}` },
@@ -54,9 +54,9 @@ router.get('/api/workouts/range', (req, res) => {
   ])
     .sort({ _id: -1 })
     .limit(7)
-    .then((dbWorkouts) => {
-      console.log(dbWorkouts);
-      res.json(dbWorkouts);
+    .then((allWorkouts) => {
+      console.log(allWorkouts);
+      res.json(allWorkouts);
     })
     .catch((err) => {
       res.json(err);
